@@ -1,9 +1,9 @@
 package graphs;
 
-// Berechne den k¸rzesten Weg von v zu jedem w.
+// Berechne den k√ºrzesten Weg von v zu jedem w.
 public class Dijkstra {
 	
-	// Unendlichkeit wird als Float.MAX_VALUE repr‰sentiert
+	// Unendlichkeit wird als Float.MAX_VALUE repr√§sentiert
 	static float infinity = Float.MAX_VALUE;
 	
 
@@ -22,34 +22,34 @@ public class Dijkstra {
 			green[i] = false;
 		}
 		
-		// v ist gr¸n
+		// v ist gr√ºn
 		green[0] = true;
 		
-		// W‰hrend Gelb nicht leer ist, w‰hle den v n‰chsten Knoten w
+		// W√§hrend Gelb nicht leer ist, w√§hle den v n√§chsten Knoten w
 		for(int i = 0; i < n - 1; i++) {
 			minDist = infinity;
 			w = 0;
 			for(int j = 0; j < n; j++) {
-				// Gelb ergibt sich aus nicht unendlich und nicht gr¸n
+				// Gelb ergibt sich aus nicht unendlich und nicht gr√ºn
 				if(dist[j] < minDist && !green[j]) {
 					minDist = dist[j];
 					// w ist der Knoten mit geringstem Abstand zu v
 					w = j;
 				}
-				// F‰rbe w gr¸n, wenn w nicht 0 ist denn 0 bedeutet dass keine Kante existiert
-				if(w > 0) {
-					green[w] = true;
-				} else {
-					// Else Gelb ist leer
-					return;
-				} 
 			}
+			// F√§rbe w gr√ºn, wenn w nicht 0 ist denn 0 bedeutet dass keine Kante existiert
+			if(w > 0) {
+				green[w] = true;
+			} else {
+				// Else Gelb ist leer
+				return;
+			} 
 			// Betrachte alle Nachfolger wi von w (hier wi = j)
 			for(int j = 1; j < n; j++) {
-				// Wenn der Weg ¸ber w k¸rzer ist update die distanz und...
+				// Wenn der Weg √ºber w k√ºrzer ist update die distanz und...
 				if(dist[j] > dist[w] + graph[w][j]) {
 					dist[j] = dist[w] + graph[w][j];
-					// ... F‰rbe die Kante w-wi rot
+					// ... F√§rbe die Kante w-wi rot
 					father[j] = w;
 				}
 			}
